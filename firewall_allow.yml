@@ -3,13 +3,14 @@
 
 - hosts: all
 
-  sudo: yes
+
 
   tasks:
 
     - name: Firewall Allow Ports 
+      firewalld:
+        port: 22/tcp
+        permanent: true
+        state: enabled
 
-      vars_files:
-    - vars/main.yml
-  roles:
-    - { role: geerlingguy.firewall }
+     
